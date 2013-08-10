@@ -1,0 +1,97 @@
+<!-- 登录成功或未登录所需的JS-->
+<script type="text/javascript">
+$(function(){
+        var user_id =$.cookie("user_id");//读取cookie中的用户信息
+		var hasLogin=false;//是否登录
+		if(user_id!=null){
+			hasLogin=true;
+		}
+		$(".p-" + (hasLogin ? "has" : "not") + "login").show();//显示登录状态
+		if (hasLogin) {
+			$(".p-nick").text($.cookie("nick"));//昵称
+		}
+});
+$(function() {
+		$(".login_form").submit(function(e) {
+			var form = $(this);
+			var url = "${ctx}/login?" + form.serialize();
+
+			if (!e.isDefaultPrevented()) {
+				$.ajax( {
+					type :"post",
+					url :url,
+					datatype :"json",
+					error: function(){
+						return;
+					},
+					success :function(dataObj){
+					    alert(dataObj);
+						var json = eval("(" + dataObj + ")");
+						if (json.status && json.status==200) {
+							history.go(0);
+						}
+					}
+				});
+				e.preventDefault();
+			}
+		});
+});
+</script>
+<table width=980 border=1 bordercolor=#FFFFFF
+	style="border-collapse: collapse">
+	<TR>
+		<TD align=middle colSpan=5><img border=0 src=${imageDomain}/logo.jpg
+			width=980 height=97></TD>
+	</TR>
+	<TR vAlign=top align=center bgcolor=#6589D1>
+		<TH width=196>Online Judge</TH>
+		<TH width=196>Problem Set</TH>
+		<TH width=196>Authors</TH>
+		<TH width=197>Online Contests</TH>
+		<TH width=197>User</TH>
+	</TR>
+	<TR vAlign=top align=center bgcolor=#F1F1FD>
+		<TD><A href=bbs>Web Board</A><br>
+		<A href=index />Home Page</A><br>
+		<A href=faq.htm target=_blank>F.A.Qs</A><br>
+		Announcement</TD>
+		<TD>
+		<form method=get action=showproblem><A href=problemlist>Problems</A><br>
+		<A href=submitpage>Submit Problem</A><br>
+		<A href=status>Status (Online)</A><br>
+		<font color=blue>Prob.ID:</font>
+		    <input type=text name=pid size=6>
+			<input type=Submit value=Go name=pb1></form>
+		</TD>
+		<TD>
+		<form method=GET action=searchuser><a href=registerpage>Register</a><br>
+		<a href=modifyuserpage>Update your info</a><br>
+		<a href=userlist>Authors ranklist</a><br>
+		<input type=text name=user_id size=10><input type=Submit
+			value=Search name=B1></form>
+		</TD>
+		<TD><font color=#1a5cc8>Current Contest</font><br>
+		<a href=pastcontests>Past Contests</a><br>
+		<a href=contests>Scheduled Contests</a></td>
+		<TD>
+            <span class="p-notlogin" style="display:none;">
+			     <form class="login_form" action="login" method="POST">
+                    User ID:
+                    <input type="text" size="10" name="user_id1">
+                    <br>
+                    Password:
+                    <input type="password" size="10" name="password1">
+                    <input type="Submit" name="B1" value="login">
+                    <a target="_parent" href="registerpage">Register</a>
+                    </form>
+			</span>
+            <span class="p-haslogin" style="display:none;">
+                Welcome<br><b><span class="p-nick"></span></b>
+                <a href="logout">Log Out</a><br>
+			    <a href=mail target=_parent><font color=blue>Mail:0(<b>0</b>)</font></a>
+
+			</span>
+
+        </td>
+	</TR>
+</TABLE>

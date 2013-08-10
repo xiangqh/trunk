@@ -1,0 +1,84 @@
+<project name="oj" default="build" basedir=".">
+
+	<property name="version" value="1.0"/>
+	<property name="src.dir" value="src/main/java" />
+	<property name="lib.dir" value="web/WEB-INF/lib" />
+	<property name="build.dir" value="build" />
+	<property name="dist.dir" value="dist" />
+	<property name="web.dir" value="web" />
+	<property name="repository.dir" value="D:/src" />
+
+	<path id="build.classpath">
+		<pathelement location="${build.dir}/classes" />
+		<fileset dir="${lib.dir}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<target name="init">
+	</target>
+
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+	<target name="prepare" depends="clean,init">
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${build.dir}/classes" />
+	</target>
+
+	<target name="build">
+
+	</target>
+
+	<condition property="isExistResources">
+		<and>
+			<available file="${src.dir}/../resources" type="dir"/>
+		</and>
+	</condition>
+
+	<target name="compile" depends="prepare">
+	    <javac srcdir="${src.dir}" destdir="${build.dir}/classes" debug="on" encoding="UTF-8">
+	    	<classpath>
+	    		<path refid="build.classpath"></path>
+	    	</classpath>
+	    </javac>
+		<copy todir="${build.dir}/classes">
+			<fileset dir="${src.dir}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		<antcall target="copyResources" />
+	</target>
+
+	<target name="copyResources" if="isExistResources">
+		<copy todir="${build.dir}/classes">
+			<fileset dir="${src.dir}/../resources"></fileset>
+		</copy>
+	</target>
+
+	<target name="jar" depends="compile">
+	    <jar destfile="${dist.dir}/oj.jar" basedir="${build.dir}/classes">
+	    	<manifest>
+				<attribute name="Manifest-Version" value="1.0" />
+				<attribute name="Created-By" value="xiangqh" />
+				<attribute name="Implementation-Title" value="qstruts2" />
+				<attribute name="Implementation-Vendor" value="xiangqh" />
+				<attribute name="Implementation-Version" value="${version}" />
+				<attribute name="SVN-Version" value="${svn.version}" />
+			</manifest>
+	    </jar>
+	</target>
+
+	<target name="war">
+		<antcall target="jar"/>
+		<war destfile="${dist.dir}/oj.war" webxml="${web.dir}/WEB-INF/web.xml">
+			<fileset dir="${web.dir}">
+				<exclude name="**/tomcat-embed*.jar" />
+			</fileset>
+			<lib file="${dist.dir}/oj.jar" />
+		</war>
+	</target>
+
+</project>

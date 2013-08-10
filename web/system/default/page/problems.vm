@@ -1,0 +1,78 @@
+<html>
+<head>
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Volume $volume</title>
+<script type="text/javascript" charset="utf-8" language="javascript" src="${jsDomain}/jquery.js"></script>
+<STYLE type=text/css>
+A {
+	TEXT-DECORATION: none
+}
+
+A:hover {
+	COLOR: red;
+	TEXT-DECORATION: underline
+}
+.p-head, .p-content, .p-foot {
+    margin: 0 auto;
+    width: 980px;
+}
+</STYLE>
+</head>
+<body leftmargin=5 link=blue alink=blue vlink=blue>
+    <div class="p-head">
+		#qModuleLoader("moduleName=module.action.common.head" "parameters={path:/system/default/module/head.vm}")
+	</div>
+	<div class="p-content">
+		    <p><center>
+	        <font size=5>Volume</font>
+			#foreach($pageNo in [1..$page.getTotalPageCount()])
+				#if($volume == $pageNo)
+					<a href=problemlist?volume=$pageNo><font size=5 color=red>$pageNo</font></a>
+				#else
+					<a href=problemlist?volume=$pageNo><font size=5>$pageNo</font></a>
+				#end
+			#end
+			</center></p>
+			<p>
+			<form method=post action=searchproblem><font color=blue size=5>Search
+			TITLE and SOURCE:</font> <input type=text name=sstr size=25><input
+				type=submit value=GO name=B1>
+			</p>
+		   </form>
+		   <TABLE cellSpacing=0 cellPadding=0 width=980 border=1
+				background=${imageDomain}/table_back.jpg style="border-collapse: collapse"
+				bordercolor=#FFFFFF>
+				<tr bgcolor=#6589D1>
+					<td width=10% align=center><a href=problemlist?volume=1><b><font
+						color=white>ID</font></b></a></td>
+					<td width=55% align=center><b>Title</b></td>
+					<td width=15% align=center><b><a
+						href=problemlist?orderby=ratio&volume=1><font color=white>Ratio</font></a>(<a
+						href=problemlist?orderby=accepted&volume=1><font color=white>AC</font></a>/<a
+						href=problemlist?orderby=submit&volume=1><font color=white>submit</font></a>)</b></td>
+					<td width=8% align=center><a
+						href=problemlist?orderby=difficulty&volume=1><b><font
+						color=white>Difficulty</font></b></a></td>
+					<td width=12% align=center><b>Date</b></td>
+				</tr>
+				#foreach($problem in $problems)
+					<tr>
+    					<td align=center>$problem.id</td>
+    					<td><a href=problem?id=$problem.id>$problem.title</a></td>
+    					<td align=center>$problem.ratio%(<a href=problemstatus?problem_id=$problem.problem_id>$problem.accepted</a>/<a
+    						href=status?id=$problem.id>$problem.submit</a>)</td>
+    					<td align=center>$problem.difficulty%</td>
+    					<td align=center>$problem.in_date</td>
+    				</tr>
+
+				#end
+			</table>
+	</div>
+	<div class="p-foot">
+		#qModuleLoader("moduleName=module.action.common.foot" "parameters={path:/system/default/module/foot.vm}")
+	</div>
+
+</body>
+</html>
+

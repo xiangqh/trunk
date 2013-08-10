@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Welcome to JudgeOnline</title>
+<script type="text/javascript" charset="utf-8" language="javascript" src="${jsDomain}/jquery.js"></script>
+<STYLE type=text/css>
+A {
+	TEXT-DECORATION: none
+}
+
+A:hover {
+	COLOR: red;
+	TEXT-DECORATION: underline
+}
+.p-head, .p-content, .p-foot {
+    margin: 0 auto;
+    width: 980px;
+}
+</STYLE>
+</head>
+<body leftmargin=5 link=blue alink=blue vlink=blue>
+    <div class="p-head">
+		#qModuleLoader("moduleName=module.action.common.head" "parameters={path:/system/default/module/head.vm}")
+	</div>
+    <div class="p-content">
+		<table border=0 width=980 background=${imageDomain}/table_back.jpg>
+    	<tr>
+    		<td>
+    		<center>
+    		<h1><font color=blue>Welcome to JudgeOnline</font></h1>
+    		</center>
+    		<p>&nbsp;&nbsp;Problem Set is the place where you can find large
+    		amount of problems from different programming contests. Online Judge
+    		System allows you to test your solution for every problem.</p>
+    		<p>&nbsp;&nbsp;First of all, read carefully <a href=faq.htm
+    			target=_blank>Frequently Asked Questions</a>.<br>
+    		&nbsp;&nbsp;Then, choose <a href=problemlist>problem</a>, solve it and
+    		<a href=submitpage>submit</a> it.</p>
+    		<p>&nbsp;&nbsp;If you want to publish your problems or setup your
+    		own online contest, just <a href=mailto:admin@admin.net>write us</a><br>
+    		</p>
+    		<p><img border=0 src=${imageDomain}/developer.jpg width=26 height=27>&nbsp;
+    		Designer: <a href=mailto:hawking@pku.edu.cn>Ying Fuchen</a><br>
+    		<img border=0 src=${imageDomain}/developer.jpg width=26 height=27>&nbsp;
+    		Developer:Xu Pengcheng&nbsp;&nbsp <a href=mailto:hawking@pku.edu.cn>Ying
+    		Fuchen</a></p>
+    		</td>
+    	</tr>
+    </table>
+	</div>
+    <div class="p-foot">
+		#qModuleLoader("moduleName=module.action.common.foot" "parameters={path:/system/default/module/foot.vm}")
+	</div>
+</body>
+</html>
+
+
+
+

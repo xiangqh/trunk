@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>$problem.problem_id -- $problem.title</title>
+<script type="text/javascript" charset="utf-8" language="javascript" src="${jsDomain}/jquery.js"></script>
+<STYLE type=text/css>
+A {
+	TEXT-DECORATION: none
+}
+
+A:hover {
+	COLOR: red;
+	TEXT-DECORATION: underline
+}
+.p-head, .p-content, .p-foot {
+    margin: 0 auto;
+    width: 980px;
+}
+</STYLE>
+</head>
+<body leftmargin=5 link=blue alink=blue vlink=blue>
+    <div class="p-head">
+		#qModuleLoader("moduleName=module.action.common.head" "parameters={path:/system/default/module/head.vm}")
+	</div>
+	<div class="p-content">
+	   <table border=0 width=100% background=${imageDomain}/table_back.jpg>
+			<tr>
+				<td>
+				<p align="center"><font color=blue size=5>$problem.title</font></p>
+				<p align="center">Time Limit:$!{problem.time_limit}MS&nbsp; Memory Limit:$!{problem.memory_limit}K<br>
+				Total Submit:${problem.submit} Accepted:$!{problem.accepted}</p>
+				<p align="left"><b><font color="#333399" size="5">Description</font></b>
+				<p><font face="Times New Roman" size="3"> $!problem.description <br><br></font></p>
+				<p align="left"><b><font color="#333399" size="5">Input</font></b>
+				<p><font face="Times New Roman" size="3">$!problem.input<br></font></p>
+				<p align="left"><b><font color="#333399" size="5">Output</font></b>
+				<p><font face="Times New Roman" size="3">$!problem.output<br></font></p>
+				<p align="left"><b><font color="#333399" size="5">SampleInput</font> </b>
+				<p><font face="Times New Roman" size="3"><pre> $!{problem.sample_input} </pre></font></p>
+				<p align="left"><b><font color="#333399" size="5">Sample Output</font> </b>
+				<p><font face="Times New Roman" size="3"><pre> $!problem.sample_output </pre></font></p>
+				<p align="left"><b><font color="#333399" size="5">Hint</font></b>
+				<p><font face="Times New Roman" size="3">$!problem.hint</font></p>
+				<p align="left"><b><font color="#333399" size="5">Source</font></b>
+				<p><font face="Times New Roman" size="3"> $!problem.source</font></p>
+				</td>
+			</tr>
+		</table>
+		<font color="#333399" size="3"><p align="center">
+            [<a href="submitpage?problem_id=1000">Submit</a>]&nbsp;&nbsp;
+            [<a href="javascript:history.go(-1)">Go Back</a>]&nbsp;&nbsp;
+			[<a href=problemstatus?problem_id=1000>Status</a>]&nbsp;&nbsp;
+            [<a href="bbs?problem_id=1000">Discuss</a>]
+          </p></font>
+	</div>
+
+    <div class="p-foot">
+		#qModuleLoader("moduleName=module.action.common.foot" "parameters={path:/system/default/module/foot.vm}")
+	</div>
+</body>
+</html>
+

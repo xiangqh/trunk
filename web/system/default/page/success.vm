@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Welcome to JudgeOnline</title>
+<script type="text/javascript" charset="utf-8" language="javascript" src="${jsDomain}/jquery.js"></script>
+<STYLE type=text/css>
+A {
+	TEXT-DECORATION: none
+}
+
+A:hover {
+	COLOR: red;
+	TEXT-DECORATION: underline
+}
+.p-head, .p-content, .p-foot {
+    margin: 0 auto;
+    width: 980px;
+}
+</STYLE>
+</head>
+<body leftmargin=5 link=blue alink=blue vlink=blue>
+    <div class="p-head">
+		#qModuleLoader("moduleName=module.action.common.head" "parameters={path:/system/default/module/head.vm}")
+	</div>
+    <div class="p-content">
+	    success
+	</div>
+    <div class="p-foot">
+		#qModuleLoader("moduleName=module.action.common.foot" "parameters={path:/system/default/module/foot.vm}")
+	</div>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,90 @@
+<html>
+<head>
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Welcome to JudgeOnline</title>
+<script type="text/javascript" charset="utf-8" language="javascript" src="${jsDomain}/jquery.js"></script>
+<STYLE type=text/css>
+A {
+	TEXT-DECORATION: none
+}
+
+A:hover {
+	COLOR: red;
+	TEXT-DECORATION: underline
+}
+.p-head, .p-content, .p-foot {
+    margin: 0 auto;
+    width: 980px;
+}
+</STYLE>
+<script type="text/javascript">
+$(function() {
+		$(".form").submit(function(e) {
+			var form = $(this);
+			var user_id = $.cookie("user_id");
+			var url = "";
+			if(user_id){
+			   url = "${ctx}/modifyUser?" + form.serialize();
+			}else {
+			   url = "${ctx}/register?" + form.serialize();
+			}
+
+			if (!e.isDefaultPrevented()) {
+				$.ajax( {
+					type :"post",
+					url :url,
+					datatype :"json",
+					error: function(){
+						return;
+					},
+					success :function(dataObj){
+						var json = eval("(" + dataObj + ")");
+						if (json.status && json.status==200) {
+							history.go(-1);
+						}
+					}
+				});
+				e.preventDefault();
+			}
+		});
+});
+</script>
+</head>
+<body leftmargin=5 link=blue alink=blue vlink=blue>
+    <div class="p-head">
+		#qModuleLoader("moduleName=module.action.common.head" "parameters={path:/system/default/module/head.vm}")
+	</div>
+    <div class="p-content">
+		<form class="form"  method=POST action=register>
+		<TABLE align=center cellSpacing=3 cellPadding=3 width=600 border=0 background=${imageDomain}/table_back.jpg>
+            <tr><td colspan=2 width=600 height=40>
+            <p align=center>Register Information</td></tr>
+            <tr><td width=25%>User ID:</td>
+            <td width=75%><input #if($user) disabled #end  type=text name=user_id size=20 value=$!{user.user_id}></td></tr>
+            <tr><td>Nick Name:</td>
+            <td><input type=text name=nick size=50 value=$!{user.nick}></td></tr>
+            <tr><td>Password:</td>
+            <td><input type=password name=password size=20 autoComplete="Off"></td>
+            </tr><tr>
+            <td>Repeat Password:</td>
+            <td>
+            <input type=password name=rptPassword size=20 ></td></tr>
+            <tr><td>School:</td>
+            <td><input type=text name=school size=30 value=$!{user.school}></td></tr>
+            <tr><td>Email:</td>
+            <td><input type=text name=email size=30 value=$!{user.email}></td>
+            </tr><tr><td>&nbsp;</td><td align=left>
+            <input type=submit value=Submit name=submit>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=reset value=Reset name=reset >
+            </td></tr></table>
+        </form>
+	</div>
+    <div class="p-foot">
+		#qModuleLoader("moduleName=module.action.common.foot" "parameters={path:/system/default/module/foot.vm}")
+	</div>
+</body>
+</html>
+
+
+
+

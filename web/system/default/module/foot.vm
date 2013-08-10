@@ -1,0 +1,10 @@
+<p><img height=29 src=${imageDomain}/home.jpg width=40 border=0><font
+	size=3><a href=.>Home Page</a> </font>&nbsp;&nbsp;<img height=29
+	src=${imageDomain}/goback.jpg width=40 border=0><font size=3><a
+	href=javascript:history.go(-1)>Go Back</a>&nbsp;&nbsp;<img height=29
+	width=40 border=0 src=${imageDomain}/top.jpg><a href=#top>To top</a></font><br>
+<hr>
+<p align=center><font size=3>All Copyright Reserved 2003-2005
+Ying Fuchen,Xu Pengcheng<br>
+Any problem, Please <a href=xxxx:admin@admin.net>Contact
+Administrator</a></font></p>

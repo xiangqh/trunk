@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+       <package name="page" extends="struts-default">
+			<action name="index" class="com.zzuli.oj.page.action.IndexAction" method="show">
+			    <result name="success">/system/default/page/index.vm</result>
+			</action>
+			<action name="loginpage" class="com.zzuli.oj.page.action.LoginAction" method="show">
+			    <result name="success">/system/default/page/login.vm</result>
+			</action>
+			<action name="login" class="com.zzuli.oj.page.action.LoginAction" method="login">
+			    <result name="success">/system/default/page/index.vm</result>
+			</action>
+			<action name="registerpage" class="com.zzuli.oj.page.action.RegisterAction" method="show">
+			    <result name="success">/system/default/page/register.vm</result>
+			</action>
+			<action name="register" class="com.zzuli.oj.page.action.RegisterAction" method="register">
+			    <result name="success">/system/default/page/success.vm</result>
+			    <result name="error">/system/default/page/register.vm</result>
+			</action>
+		</package>
+
+</struts>

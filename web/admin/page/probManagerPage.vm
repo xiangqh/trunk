@@ -1,0 +1,99 @@
+<html>
+<head>
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Cache-Control" max-age="0">
+<META HTTP-EQUIV="Expires" CONTENT=\00">
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>#if($operate == "new")Add a Problem #else Modify a Problem #end</title>
+</head>
+<body leftmargin="30">
+	<divalign="center">
+	<center>
+		<table border="0" cellpadding="0" cellspacing="0"
+			style="border-collapse: collapse" width="100%" height="50">
+			<tr>
+				<td width="100"><img border="0"
+					src="${imageDomain}/pku_logol.jpg" width="65" height="65"></td>
+				<td>
+					<p align="center">
+						<font color="#333399" size="4">Welcome To Administrator's
+							Page of Judge Online of ACM ICPC, zzuli University</font>
+				</td>
+				<td width="100"></td>
+			</tr>
+		</table>
+	</center>
+	</div>
+	<hr>
+	<h1>#if($operate == "new")Add a Problem #else Modify a Problem #end</h1>
+	<form method=POST action=#if($operate == "new")addProblem #else modifyProblem #end>
+		<p align=center>
+			<font size=4 color=#333399>#if($operate == "new")Add a Problem #else Modify a Problem #end</font>
+		</p>
+		<input type=hidden name=problem_id value=#if($operate == "new") 0 #else $problem_id #end>
+		<p align=left>Problem Id:&nbsp;&nbsp;#if($operate == "new")New Problem #else Modify Problem #end</p>
+		<p align=left>
+			Title:
+			<textarea name=title rows=1 cols=71>#if($operate == "modify")$problem.title #end</textarea>
+		</p>
+		<p align=left>
+			Time Limit:<input type=text name=time_limit size=20 value=#if($operate == "modify")$problem.time_limit #else 1000#end>MS
+		</p>
+		<p align=left>
+			Memory Limit:<input type=text name=memory_limit size=20 value=#if($operate == "modify")$problem.memory_limit #else 65536#end>KByte
+		</p>
+		<p align=left>
+			Case Time Limit:<input type=text name=case_time_limit size=20
+				value=#if($operate == "modify")$problem.case_time_limit #else 30000 #end>MS
+		</p>
+		<p align=left>
+			Description:<br>
+			<textarea rows=13 name=description cols=120>#if($operate == "modify")$problem.description #end</textarea>
+		</p>
+		<p align=left>
+			Input:<br>
+			<textarea rows=13 name=input cols=120>#if($operate == "modify")$problem.input #end</textarea>
+		</p>
+		<p align=left>
+			Output:<br>
+			<textarea rows=13 name=output cols=120>#if($operate == "modify")$problem.output #end</textarea>
+		</p>
+		<p align=left>
+			Sample Input:<br>
+			<textarea rows=13 name=sample_input cols=120>#if($operate == "modify")$problem.sample_input #end</textarea>
+		</p>
+		<p align=left>
+			Sample Output:<br>
+			<textarea rows=13 name=sample_output cols=120>#if($operate == "modify")$problem.sample_output #end</textarea>
+		</p>
+		<p align=left>
+			Hint:<br>
+			<textarea rows=13 name=hint cols=120>#if($operate == "modify")$problem.hint #end</textarea>
+		</p>
+		<p align=left>
+			Source:<br>
+			<textarea name=source rows=1 cols=70>#if($operate == "modify")$problem.source #end</textarea>
+		</p>
+		<p align=left>
+			contest:<select name=contest_id><option value="">no
+					contest</option>
+			</select>
+		</p>
+		<div align=center>
+			<input type=submit value=Submit name=submit>
+		</div>
+	</form>
+	<p>
+		<img height="29" src="${imageDomain}/j0293234.wmf" width="40"
+			border="0"> <font size="3"><a href="admin">Admin's
+				Home Page</a> </font><br>
+	<hr>
+	<p align="center">
+		<font size="3">All Copyright Reserved 2003<br> Any
+			problem, Please <a href="mailto:admin@admin.net">Contact
+				Administrator</a></font>
+	</p>
+</body>
+</html>

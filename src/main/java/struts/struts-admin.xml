@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="admin" extends="struts-default" namespace="/admin">
+		<global-results>
+			<result>/admin/page/login.vm</result>
+		</global-results>
+		<action name="login" class="com.zzuli.oj.admin.action.AdminAction"
+			method="show">
+			<result name="success">/admin/page/login.vm</result>
+		</action>
+		<action name="index" class="com.zzuli.oj.admin.action.AdminAction"
+			method="login">
+			<result name="success">/admin/page/admin.vm</result>
+			<result name="error">/admin/page/login.vm</result>
+		</action>
+
+		<!-- problem -->
+		<action name="editProblemPage" class="com.zzuli.oj.admin.action.ProblemAction"
+			method="editProblemPage">
+			<result name="success">/admin/page/probManagerPage.vm</result>
+		</action>
+
+		<action name="addProblem" class="com.zzuli.oj.admin.action.ProblemAction"
+			method="addProblem">
+			<result name="success" type="redirect">problemlist</result>
+		</action>
+		<action name="modifyProblem" class="com.zzuli.oj.admin.action.ProblemAction"
+			method="modifyProblem">
+			<result name="success" type="redirect">problemlist</result>
+		</action>
+		<action name="deleteProblem" class="com.zzuli.oj.admin.action.ProblemAction"
+			method="delProblem">
+			<result name="success" type="redirect">problemlist</result>
+		</action>
+		<action name="problemlist" class="com.zzuli.oj.admin.action.ProblemAction"
+			method="problemList">
+			<result name="success">/admin/page/problemlist.vm</result>
+		</action>
+	</package>
+
+</struts>
