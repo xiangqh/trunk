@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>$problem.problem_id -- $problem.title</title>
+<script type="text/javascript" charset="utf-8" language="javascript" src="${jsDomain}/jquery.js"></script>
+<STYLE type=text/css>
+A {
+	TEXT-DECORATION: none
+}
+
+A:hover {
+	COLOR: red;
+	TEXT-DECORATION: underline
+}
+.p-head, .p-content, .p-foot {
+    margin: 0 auto;
+    width: 980px;
+}
+</STYLE>
+</head>
+<body leftmargin=5 link=blue alink=blue vlink=blue>
+    <div class="p-head">
+		#qModuleLoader("moduleName=module.action.common.head" "parameters={path:/system/default/module/head.vm}")
+	</div>
+	<div class="p-content">
+	   <table border=0 width=100% background=${imageDomain}/table_back.jpg>
+			<tr>
+                <td>
+				   <form method="POST" action="submit">
+						<p align="center"><font size="4" color="#333399">Submit Your Solution Via Web</font></p>
+                        <p align="center">
+                        Problem ID:<input type="text" name="problem_id" value="$!{problem_id}" size="20" accesskey=p><br>
+                        Language:<select size="1" name="language" style="width:100;" accesskey=l>
+                                    <option value=0>G++</option>
+                                    <option value=1 selected>GCC</option>
+                                    <option value=2>Pascal</option>
+                                 </select><br>
+                        <p align="center">
+                        Source: <br>
+                        <textarea rows="30" name="source" cols="79" accesskey=c></textarea></p>
+                        <div align="center">
+                        <pre>
+						    <input type="submit" value="Submit" name="submit">
+						    <input type="reset" value="Reset" name="reset" >
+					    </pre>
+                        </div>
+                    </form>
+				
+				</td>
+            </tr>
+		</table>
+		<font color="#333399" size="3"><p align="center">
+            [<a href="submitpage?problem_id=1000">Submit</a>]&nbsp;&nbsp;
+            [<a href="javascript:history.go(-1)">Go Back</a>]&nbsp;&nbsp;
+			[<a href=problemstatus?problem_id=1000>Status</a>]&nbsp;&nbsp;
+            [<a href="bbs?problem_id=1000">Discuss</a>]
+          </p></font>
+	</div>
+
+    <div class="p-foot">
+		#qModuleLoader("moduleName=module.action.common.foot" "parameters={path:/system/default/module/foot.vm}")
+	</div>
+</body>
+</html>
+

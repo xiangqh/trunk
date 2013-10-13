@@ -4,6 +4,7 @@ import java.io.File;
 
 import javax.servlet.ServletException;
 
+import org.apache.catalina.Context;
 import org.apache.catalina.core.AprLifecycleListener;
 import org.apache.catalina.core.StandardServer;
 import org.apache.catalina.startup.Tomcat;
@@ -23,7 +24,7 @@ public class EmbedTomcatServer {
 	 */
 	public static void main(String[] args) throws Exception {
 		String application  = "new_oj";
-		int httpPort = 9999;
+		int httpPort = 9997;
 		if(args.length == 2) {
 			httpPort = Integer.valueOf(args[1]);
 		}
@@ -36,8 +37,8 @@ public class EmbedTomcatServer {
         StandardServer server = (StandardServer) tomcat.getServer();
         server.addLifecycleListener(aprLifecycleListener);
 
-        tomcat.addWebapp("/" + application, new File("web").getAbsolutePath());
-
+        Context context = tomcat.addWebapp("/" + application, new File("web").getAbsolutePath());
+        context.setReloadable(true);
         logger.info("Starting tomcat for " + application + "......");
         tomcat.start();
         server.await();

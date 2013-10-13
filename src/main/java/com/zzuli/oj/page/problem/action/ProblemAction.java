@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
+import org.zz.qstruts2.action.QAction;
 import org.zz.qstruts2.annotations.ActionController;
 import org.zz.qstruts2.annotations.RequestMapping;
 
 import com.opensymphony.xwork2.Result;
-import com.zzuli.oj.common.Action;
 import com.zzuli.oj.common.BaseResult;
 import com.zzuli.oj.common.Page;
 import com.zzuli.oj.common.util.SearchField;
@@ -24,7 +24,7 @@ import com.zzuli.oj.problem.service.ISearchService;
  */
 @Controller
 @ActionController
-public class ProblemAction extends Action{
+public class ProblemAction extends QAction{
 
 	@Autowired
 	private IProblemService problemService;
@@ -69,6 +69,24 @@ public class ProblemAction extends Action{
 		Problem problem = problemService.getProblemById(problem_id);
 		setHttpAttribute("problem", problem);
 		return new BaseResult("/system/default/page/problemInfo.vm");
+	}
+	
+	@RequestMapping("submitpage")
+	public Result submitPage(){
+		
+		int problem_id = getParameterInt("problem_id");
+		setHttpAttribute("problem_id", problem_id);
+		return new BaseResult("/system/default/page/problemSubmit.vm");
+	}
+	
+	@RequestMapping("submit")
+	public Result submit(){
+		
+		int problem_id = getParameterInt("problem_id");
+		String language = getHttpParameter("language");
+		String source = getHttpParameter("source");
+		setHttpAttribute("problem_id", problem_id);
+		return new BaseResult("/system/default/page/status.vm");
 	}
 
 	@Required

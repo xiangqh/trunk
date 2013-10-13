@@ -59,9 +59,9 @@ A:hover {
 				#foreach($problem in $problems)
 					<tr>
     					<td align=center>$problem.id</td>
-    					<td><a href=problem?id=$problem.id>$problem.title</a></td>
+    					<td><a href=problem?problem_id=$problem.id>$problem.title</a></td>
     					<td align=center>$problem.ratio%(<a href=problemstatus?problem_id=$problem.problem_id>$problem.accepted</a>/<a
-    						href=status?id=$problem.id>$problem.submit</a>)</td>
+    						href=status?problem_id=$problem.id>$problem.submit</a>)</td>
     					<td align=center>$problem.difficulty%</td>
     					<td align=center>$problem.in_date</td>
     				</tr>
